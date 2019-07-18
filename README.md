@@ -1,42 +1,21 @@
-# laravel-db-backup
+# Laravel Backups
 
-Based off of https://github.com/schickling/laravel-backup with support for Laravel 5.*.
+Package to manage database backups in a Laravel project. Easily integrates with Dropbox and AWS S3.
 
+> This package is based on [wladmonax/laravel-db-backup](https://github.com/wladmonax/laravel-db-backup) so credit to them for their great work.
 
-Installation
-----
-Run composer command :
-```bash
-composer require wladmonax/laravel-db-backup
-```
-Or                  
-                            
-Update your `composer.json` file to include this package as a dependency
-```json
-"wladmonax/laravel-db-backup": "1.1.*",
-```
+### Table of Contents
 
-Register the service provider by adding it to the providers array in the `config/app.php` file.
-```php
-'providers' => array(
-    'skcin7\LaravelDbBackup\DBBackupServiceProvider'
-)
-```
-or 
-  
-```php
-'providers' => array(
-    skcin7\LaravelDbBackup\DBBackupServiceProvider::class
-)
-```
+- [Installation](#installation)
+- [Contribution Guidelines](#contribution-guidelines)
+- [Maintainers](#maintainers)
+- [License](#license)
 
-Run command to creating tables: 
+### Installation
 
-```sh
-$ php artisan migrate
-```
+Run Composer command: `composer require skcin7/laravel-backups`
 
-# Configuration
+### Configuration
 
 Copy the config file into your project by running
 ```
