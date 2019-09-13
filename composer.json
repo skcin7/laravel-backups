@@ -1,6 +1,8 @@
 {
     "name": "skcin7/laravel-backups",
     "description": "Package to manage database backups in a Laravel project. Easily integrates with Dropbox and AWS S3.",
+    "keywords": ["LaravelBackups"],
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
