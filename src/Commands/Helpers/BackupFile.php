@@ -55,7 +55,7 @@ class BackupFile
      */
     private function build($dumpPath, $database)
     {
-        $this->fileName = $database->getDatabaseName() . '-' . Carbon::now()->format('Y-m-d-H-i-s') . '.' . $database->getFileExtension();
+        $this->fileName = $database->getDatabaseName() . '_' . Carbon::now()->format('Y-m-d-H-i-s') . '.' . $database->getFileExtension();
         $this->filePath = rtrim($dumpPath, '/') . '/' . $this->fileName;
     }
 

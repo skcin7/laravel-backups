@@ -47,7 +47,7 @@ class RestoreCommand extends BaseCommand
             return $this->restoreLastDropboxDump();
         }
 
-        $fileName = $this->argument('dump');
+        $fileName = $this->option('filename');
 
         if($this->option('last-dump')) {
             $fileName = $this->lastBackupFile();
@@ -128,17 +128,17 @@ class RestoreCommand extends BaseCommand
     {
         $sourceFile = $this->getDumpsPath() . $fileName;
 
-        if ($this->isCompressed($sourceFile)) {
+        if($this->isCompressed($sourceFile)) {
             $sourceFile = $this->uncompress($sourceFile);
         }
 
         $status = $this->database->restore($this->getUncompressedFileName($sourceFile));
 
-        if ($this->isCompressed($sourceFile)) {
+        if($this->isCompressed($sourceFile)) {
             $this->uncompressCleanup($this->getUncompressedFileName($sourceFile));
         }
 
-        if ($status === true) {
+        if($status === true) {
             return $this->line(
                 sprintf($this->colors->getColoredString("\n" . '%s was successfully restored.' . "\n", 'green'), $fileName)
             );
@@ -235,15 +235,15 @@ class RestoreCommand extends BaseCommand
         return preg_replace('"\.gz$"', '', $fileName);
     }
 
-    /**
-     * @return array
-     */
-    protected function getArguments()
-    {
-        return [
-            ['dump', InputArgument::OPTIONAL, 'Filename of the dump']
-        ];
-    }
+//    /**
+//     * @return array
+//     */
+//    protected function getArguments()
+//    {
+//        return [
+//            ['dump', InputArgument::OPTIONAL, 'Filename of the dump']
+//        ];
+//    }
 
     /**
      * @return array
@@ -251,6 +251,7 @@ class RestoreCommand extends BaseCommand
     protected function getOptions()
     {
         return [
+            ['filename', null, InputOption::VALUE_OPTIONAL, 'Filename of the dump'],
             ['database', null, InputOption::VALUE_OPTIONAL, 'The database connection to restore to'],
             ['last-dump', true, InputOption::VALUE_NONE, 'The last dump stored'],
             ['dropbox-last-dump', false, InputOption::VALUE_NONE, 'The last dump from dropbox'],
